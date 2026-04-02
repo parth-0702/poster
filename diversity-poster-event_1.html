@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diversity in India – Poster Presentation | Equal Opportunity Cell</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --saffron: #FF6B00;
+    --white: #FFFFFF;
+    --green: #138808;
+    --navy: #0A1628;
+    --gold: #FFD700;
+    --pink: #E91E8C;
+    --teal: #00BCD4;
+    --purple: #7B2FBE;
+    --light-bg: #FFF9F0;
+    --card-bg: rgba(255,255,255,0.95);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--navy);
+    color: var(--navy);
+    overflow-x: hidden;
+  }
+
+  /* ── WELCOME OVERLAY ── */
+  #welcome-overlay {
+    position: fixed; inset: 0; z-index: 9999;
+    background: var(--navy);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center; padding: 2rem;
+    animation: overlayFadeOut 0.8s ease-in-out 3.8s forwards;
+  }
+
+  .welcome-rangoli {
+    font-size: 4rem;
+    animation: spin 2s ease-in-out infinite alternate;
+    display: block; margin-bottom: 1rem;
+  }
+
+  .welcome-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 6vw, 2.8rem);
+    color: var(--gold);
+    line-height: 1.2;
+    animation: fadeInUp 0.7s ease 0.3s both;
+  }
+
+  .welcome-sub {
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
+    color: rgba(255,255,255,0.7);
+    margin-top: 0.8rem;
+    animation: fadeInUp 0.7s ease 0.6s both;
+  }
+
+  .welcome-dots {
+    margin-top: 2rem;
+    display: flex; gap: 0.5rem;
+    animation: fadeInUp 0.7s ease 1s both;
+  }
+
+  .welcome-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    animation: dotPulse 0.6s ease infinite alternate;
+  }
+  .welcome-dot:nth-child(1){ background: var(--saffron); animation-delay: 0s; }
+  .welcome-dot:nth-child(2){ background: var(--white); animation-delay: 0.2s; }
+  .welcome-dot:nth-child(3){ background: var(--green); animation-delay: 0.4s; }
+  .welcome-dot:nth-child(4){ background: var(--pink); animation-delay: 0.6s; }
+  .welcome-dot:nth-child(5){ background: var(--gold); animation-delay: 0.8s; }
+
+  @keyframes overlayFadeOut {
+    to { opacity: 0; pointer-events: none; visibility: hidden; }
+  }
+  @keyframes spin {
+    from { transform: rotate(-10deg) scale(1); }
+    to   { transform: rotate(10deg) scale(1.1); }
+  }
+  @keyframes dotPulse {
+    from { transform: scale(1); opacity: 0.5; }
+    to   { transform: scale(1.5); opacity: 1; }
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── MAIN PAGE ── */
+  #main-page {
+    opacity: 0;
+    animation: mainReveal 0.8s ease 4.2s forwards;
+  }
+  @keyframes mainReveal {
+    to { opacity: 1; }
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, #FF6B00 0%, #FF8C42 25%, #0A1628 55%, #138808 100%);
+    position: relative; overflow: hidden;
+    padding: 3.5rem 1.5rem 4rem;
+    text-align: center;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .floating-emoji {
+    position: absolute; font-size: 1.8rem;
+    animation: floatAround 6s ease-in-out infinite;
+    opacity: 0.5;
+  }
+  .fe1 { top: 8%; left: 5%;  animation-delay: 0s; }
+  .fe2 { top: 15%; right: 8%; animation-delay: 1s; }
+  .fe3 { top: 55%; left: 2%; animation-delay: 2s; }
+  .fe4 { top: 70%; right: 5%; animation-delay: 0.5s; }
+
+  @keyframes floatAround {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-12px) rotate(10deg); }
+  }
+
+  .org-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.4rem 1.2rem;
+    border-radius: 50px;
+    margin-bottom: 1.2rem;
+  }
+
+  .hero-emoji { font-size: 3.5rem; display: block; margin-bottom: 0.8rem; }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 8vw, 3.2rem);
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+
+  .hero-title span { color: var(--gold); }
+
+  .hero-sub {
+    font-size: clamp(1rem, 3.5vw, 1.25rem);
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 2rem;
+    font-weight: 300;
+  }
+
+  .tricolor-bar {
+    display: flex; height: 5px; border-radius: 10px;
+    overflow: hidden; max-width: 280px; margin: 0 auto 2rem;
+  }
+  .tricolor-bar div { flex: 1; }
+  .tc1 { background: var(--saffron); }
+  .tc2 { background: var(--white); }
+  .tc3 { background: var(--green); }
+
+  .hero-stats {
+    display: flex; justify-content: center;
+    gap: 1.5rem; flex-wrap: wrap;
+  }
+
+  .stat-pill {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 50px;
+    padding: 0.5rem 1.2rem;
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: flex; align-items: center; gap: 0.4rem;
+  }
+
+  /* ── SECTION WRAPPER ── */
+  .section {
+    padding: 2.5rem 1.2rem;
+    max-width: 680px; margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--saffron); margin-bottom: 0.5rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 5vw, 1.9rem);
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 1.2rem;
+    line-height: 1.25;
+  }
+
+  /* ── TOPIC CARD ── */
+  .topic-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(10,22,40,0.12);
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+
+  .topic-card-top {
+    background: linear-gradient(135deg, var(--navy), #1a3060);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .topic-card-top::after {
+    content: '🇮🇳';
+    position: absolute; right: -10px; bottom: -10px;
+    font-size: 5rem; opacity: 0.08;
+  }
+
+  .topic-big {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 6vw, 2.2rem);
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1.2;
+  }
+
+  .topic-desc {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    font-weight: 300;
+  }
+
+  .topic-card-bottom {
+    padding: 1.5rem;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .mini-theme {
+    background: var(--light-bg);
+    border-radius: 12px;
+    padding: 0.8rem;
+    text-align: center;
+    border-left: 3px solid var(--saffron);
+  }
+
+  .mini-theme:nth-child(2) { border-color: var(--green); }
+  .mini-theme:nth-child(3) { border-color: var(--pink); }
+  .mini-theme:nth-child(4) { border-color: var(--purple); }
+
+  .mini-theme .emoji { font-size: 1.5rem; display: block; margin-bottom: 0.3rem; }
+  .mini-theme .label { font-size: 0.75rem; font-weight: 600; color: var(--navy); }
+
+  /* ── SEGMENT BG ── */
+  .bg-light { background: var(--light-bg); }
+  .bg-navy { background: var(--navy); }
+
+  /* ── WHAT YOU GET ── */
+  .provided-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0.9rem; margin-top: 1rem;
+  }
+
+  .provided-item {
+    background: var(--card-bg);
+    border-radius: 14px;
+    padding: 1rem;
+    display: flex; align-items: center; gap: 0.7rem;
+    box-shadow: 0 2px 12px rgba(10,22,40,0.07);
+  }
+
+  .provided-icon {
+    font-size: 1.6rem;
+    flex-shrink: 0;
+  }
+
+  .provided-text { font-size: 0.8rem; font-weight: 600; color: var(--navy); }
+
+  /* ── RULES ── */
+  .rules-list { list-style: none; margin-top: 0.5rem; }
+
+  .rule-item {
+    display: flex; gap: 1rem; align-items: flex-start;
+    padding: 1rem 1.2rem;
+    background: #fff;
+    border-radius: 14px;
+    margin-bottom: 0.75rem;
+    border-left: 4px solid var(--saffron);
+    box-shadow: 0 2px 12px rgba(10,22,40,0.07);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .rule-item:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(10,22,40,0.12); }
+  .rule-item:nth-child(2) { border-color: var(--green); }
+  .rule-item:nth-child(3) { border-color: var(--purple); }
+  .rule-item:nth-child(4) { border-color: var(--teal); }
+  .rule-item:nth-child(5) { border-color: var(--pink); }
+  .rule-item:nth-child(6) { border-color: #C62828; }
+  .rule-item:nth-child(7) { border-color: var(--saffron); }
+  .rule-item:nth-child(8) { border-color: var(--green); }
+
+  .rule-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; font-weight: 900;
+    color: var(--saffron); flex-shrink: 0;
+    line-height: 1; min-width: 2rem;
+  }
+  .rule-item:nth-child(2) .rule-num { color: var(--green); }
+  .rule-item:nth-child(3) .rule-num { color: var(--purple); }
+  .rule-item:nth-child(4) .rule-num { color: var(--teal); }
+  .rule-item:nth-child(5) .rule-num { color: var(--pink); }
+  .rule-item:nth-child(6) .rule-num { color: #C62828; }
+  .rule-item:nth-child(7) .rule-num { color: var(--saffron); }
+  .rule-item:nth-child(8) .rule-num { color: var(--green); }
+
+  .rule-text { font-size: 0.88rem; color: #2c2c2c; line-height: 1.6; }
+  .rule-text strong { color: var(--navy); font-weight: 700; }
+
+  /* ── DISQUALIFICATION ── */
+  .dq-box {
+    background: linear-gradient(135deg, #C62828, #8B0000);
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: center;
+    position: relative; overflow: hidden;
+    margin-top: 1.5rem;
+  }
+  .dq-box::before {
+    content: '⚠️';
+    position: absolute; right: -8px; top: -8px;
+    font-size: 5rem; opacity: 0.1;
+  }
+  .dq-title { font-size: 1rem; font-weight: 700; color: #FFCDD2; margin-bottom: 0.5rem; }
+  .dq-text { font-size: 0.83rem; color: rgba(255,200,200,0.9); line-height: 1.5; }
+
+  /* ── INTERNET NOTE ── */
+  .internet-note {
+    background: linear-gradient(135deg, #00BCD4, #006064);
+    border-radius: 16px;
+    padding: 1.4rem;
+    display: flex; gap: 1rem; align-items: flex-start;
+    margin-top: 1rem;
+  }
+  .internet-note .icon { font-size: 2rem; flex-shrink: 0; }
+  .internet-note-text h4 { color: #fff; font-size: 0.9rem; margin-bottom: 0.3rem; }
+  .internet-note-text p { color: rgba(255,255,255,0.8); font-size: 0.8rem; line-height: 1.5; }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: #050D1A;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    color: rgba(255,255,255,0.4);
+    font-size: 0.78rem;
+  }
+  .footer .eoc-name {
+    color: var(--gold);
+    font-weight: 600; font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+    display: block;
+  }
+
+  /* ── DECORATIVE WAVE ── */
+  .wave {
+    width: 100%; overflow: hidden; line-height: 0;
+  }
+  .wave svg { display: block; }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible {
+    opacity: 1; transform: translateY(0);
+  }
+
+  /* ── TIMELINE BADGE ── */
+  .time-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: linear-gradient(135deg, var(--saffron), #FF8C42);
+    color: #fff; font-weight: 700;
+    font-size: clamp(0.85rem, 3vw, 1rem);
+    padding: 0.6rem 1.4rem; border-radius: 50px;
+    box-shadow: 0 4px 20px rgba(255,107,0,0.4);
+    margin: 0.5rem auto; display: flex;
+    justify-content: center; max-width: max-content;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- WELCOME OVERLAY -->
+<div id="welcome-overlay">
+  <span class="welcome-rangoli">🪷</span>
+  <div class="welcome-title">Welcome to<br>the Celebration<br>of <span style="color:var(--saffron)">Diversity!</span></div>
+  <div class="welcome-sub">Equal Opportunity Cell, CHARUSAT University invites you 🙏</div>
+  <div class="welcome-dots">
+    <div class="welcome-dot"></div>
+    <div class="welcome-dot"></div>
+    <div class="welcome-dot"></div>
+    <div class="welcome-dot"></div>
+    <div class="welcome-dot"></div>
+  </div>
+</div>
+
+<!-- MAIN PAGE -->
+<div id="main-page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <span class="floating-emoji fe1">🎨</span>
+    <span class="floating-emoji fe2">🪔</span>
+    <span class="floating-emoji fe3">🌺</span>
+    <span class="floating-emoji fe4">✏️</span>
+
+    <div class="org-badge">Equal Opportunity Cell • CHARUSAT University</div>
+    <span class="hero-emoji">🇮🇳</span>
+    <h1 class="hero-title">Poster Presentation<br><span>Diversity in India</span></h1>
+    <p class="hero-sub">Express. Create. Celebrate.</p>
+    <p style="color:rgba(255,255,255,0.6);font-size:0.78rem;margin-top:-1rem;margin-bottom:1.5rem;letter-spacing:0.08em;">CHARUSAT University</p>
+
+    <div class="tricolor-bar">
+      <div class="tc1"></div>
+      <div class="tc2"></div>
+      <div class="tc3"></div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat-pill">⏱️ 1 hr 15 min</div>
+      <div class="stat-pill">🎨 Colours Provided</div>
+      <div class="stat-pill">📡 Internet Allowed</div>
+    </div>
+  </div>
+
+  <!-- WAVE -->
+  <div class="wave bg-light">
+    <svg viewBox="0 0 1200 60" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,60 C300,0 900,0 1200,60 L1200,0 L0,0 Z" fill="url(#grad)" />
+      <defs>
+        <linearGradient id="grad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#FF6B00"/>
+          <stop offset="50%" stop-color="#0A1628"/>
+          <stop offset="100%" stop-color="#138808"/>
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
+
+  <!-- TOPIC SECTION -->
+  <div class="bg-light">
+    <div class="section">
+      <p class="section-label reveal">Topic of Presentation</p>
+      <h2 class="section-title reveal">What to Paint & Portray</h2>
+
+      <div class="topic-card reveal">
+        <div class="topic-card-top">
+          <div class="topic-big">🌍 Diversity in India</div>
+          <p class="topic-desc">Celebrate the rich tapestry of India's cultures, languages, traditions & unity</p>
+        </div>
+        <div class="topic-card-bottom">
+          <div class="mini-theme">
+            <span class="emoji">🕌🛕⛪🕍</span>
+            <div class="label">Religious Harmony</div>
+          </div>
+          <div class="mini-theme">
+            <span class="emoji">👗🥻🧣</span>
+            <div class="label">Cultural Attire</div>
+          </div>
+          <div class="mini-theme">
+            <span class="emoji">🗣️🔤🎵</span>
+            <div class="label">Languages & Arts</div>
+          </div>
+          <div class="mini-theme">
+            <span class="emoji">🍛🥘🧆</span>
+            <div class="label">Food & Traditions</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="time-badge reveal">
+        ⏳ Duration: 1 Hour 15 Minutes
+      </div>
+    </div>
+  </div>
+
+  <!-- WAVE -->
+  <div class="wave" style="background:var(--light-bg)">
+    <svg viewBox="0 0 1200 60" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,0 C400,60 800,60 1200,0 L1200,60 L0,60 Z" fill="#0A1628"/>
+    </svg>
+  </div>
+
+  <!-- WHAT'S PROVIDED -->
+  <div class="bg-navy">
+    <div class="section">
+      <p class="section-label" style="color:var(--gold)" >Provided to You</p>
+      <h2 class="section-title" style="color:#fff">Everything You Need 🎁</h2>
+
+      <div class="provided-grid">
+        <div class="provided-item reveal">
+          <div class="provided-icon">🎨</div>
+          <div class="provided-text">Colours & Brushes</div>
+        </div>
+        <div class="provided-item reveal">
+          <div class="provided-icon">📄</div>
+          <div class="provided-text">Drawing Sheets</div>
+        </div>
+        <div class="provided-item reveal">
+          <div class="provided-icon">✏️</div>
+          <div class="provided-text">Pencils & Erasers</div>
+        </div>
+        <div class="provided-item reveal">
+          <div class="provided-icon">📏</div>
+          <div class="provided-text">Scale / Ruler</div>
+        </div>
+      </div>
+
+      <div class="internet-note reveal">
+        <div class="icon">🌐</div>
+        <div class="internet-note-text">
+          <h4>Internet Allowed for Ideas</h4>
+          <p>You may browse the internet to find inspiration, references, and ideas. However, your artwork must reflect your own original creativity!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WAVE -->
+  <div class="wave" style="background:var(--navy)">
+    <svg viewBox="0 0 1200 60" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,60 C300,0 900,0 1200,60 L1200,0 L0,0 Z" fill="#FFF9F0"/>
+    </svg>
+  </div>
+
+  <!-- RULES SECTION -->
+  <div class="bg-light">
+    <div class="section">
+      <p class="section-label">Rules & Regulations</p>
+      <h2 class="section-title">Guidelines for Participants 📋</h2>
+
+      <ul class="rules-list">
+        <li class="rule-item reveal">
+          <span class="rule-num">01</span>
+          <span class="rule-text"><strong>Topic is fixed:</strong> Your poster must be based on <em>"Diversity in India"</em>. No other theme will be accepted.</span>
+        </li>
+        <li class="rule-item reveal">
+          <span class="rule-num">02</span>
+          <span class="rule-text"><strong>Time limit:</strong> You will get exactly <strong>1 hour and 15 minutes</strong>. Work must stop when time is called.</span>
+        </li>
+        <li class="rule-item reveal">
+          <span class="rule-num">03</span>
+          <span class="rule-text"><strong>Materials:</strong> Use only the colours, brushes, sheets, pencils, erasers, and scale provided by the organizers.</span>
+        </li>
+        <li class="rule-item reveal">
+          <span class="rule-num">04</span>
+          <span class="rule-text"><strong>Internet for ideas only:</strong> You may use the internet to search for inspiration and reference images.</span>
+        </li>
+        <li class="rule-item reveal">
+          <span class="rule-num">05</span>
+          <span class="rule-text"><strong>Originality is mandatory:</strong> Your poster must show your own creativity and artistic expression.</span>
+        </li>
+        <li class="rule-item reveal">
+          <span class="rule-num">06</span>
+          <span class="rule-text"><strong>No copying:</strong> Do not directly copy or reproduce any complete poster design found online. This will lead to <strong>immediate disqualification</strong>.</span>
+        </li>
+        <li class="rule-item reveal">
+          <span class="rule-num">07</span>
+          <span class="rule-text"><strong>Neat presentation:</strong> Label your poster with your name and participant ID before submission.</span>
+        </li>
+        <li class="rule-item reveal">
+          <span class="rule-num">08</span>
+          <span class="rule-text"><strong>Respect & inclusivity:</strong> Your poster must reflect positive and respectful representation of all communities.</span>
+        </li>
+      </ul>
+
+      <div class="dq-box reveal">
+        <div class="dq-title">⚠️ Disqualification Warning</div>
+        <div class="dq-text">Copying any poster entirely from the internet or reproducing another participant's work will result in <strong>immediate disqualification</strong> from the event. Your creativity is your superpower — use it!</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WAVE -->
+  <div class="wave" style="background:var(--light-bg)">
+    <svg viewBox="0 0 1200 60" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,0 C400,60 800,60 1200,0 L1200,60 L0,60 Z" fill="#050D1A"/>
+    </svg>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span class="eoc-name">Equal Opportunity Cell — CHARUSAT University</span>
+    Organized with 🧡 to celebrate the spirit of India's beautiful diversity.<br>
+    <span style="margin-top:0.4rem;display:block;">🇮🇳 Unity in Diversity 🌸</span>
+  </div>
+
+</div><!-- /main-page -->
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(r => observer.observe(r));
+</script>
+</body>
+</html>
